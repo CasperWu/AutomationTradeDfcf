@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 
 namespace AutomationTradeDfcf
 {
@@ -12,9 +13,9 @@ namespace AutomationTradeDfcf
         {
             Dfcf app = new Dfcf();
             app.StartApp();
-            app.Test1();
+            Thread.Sleep(3000);
             app.Test2();
-            app.CloseApp();
+            ///app.CloseApp();
         }
     }
 }

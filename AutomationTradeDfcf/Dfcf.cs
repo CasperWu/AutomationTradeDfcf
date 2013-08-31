@@ -18,7 +18,7 @@ namespace AutomationTradeDfcf
         /// <summary>
         /// 需要测试的 EXE 程序.
         /// </summary>
-        private const String APP_NAME = @"C:\Windows\system32\calc.exe";
+        private const String APP_NAME = @"D:\Packages\东方财富通8\stockway.exe";
         /// <summary>
         /// 每个操作 默认的间隔时间.
         /// </summary>
@@ -111,9 +111,10 @@ namespace AutomationTradeDfcf
             // 启动被测试的程序
             process = Process.Start(APP_NAME);
             // 当前线程休眠2秒.
-            Thread.Sleep(DEFAULT_SLEEP_TIME);
+            Thread.Sleep(DEFAULT_SLEEP_TIME);            
             // 获得对主窗体对象的引用
             testMainForm = AutomationElement.FromHandle(process.MainWindowHandle);
+            /*
             // 计算器层次下，首先是一个 Pane.
             AutomationElementCollection panes = testMainForm.FindAll(TreeScope.Children,
                     new PropertyCondition(AutomationElement.ControlTypeProperty, ControlType.Pane));
@@ -123,6 +124,7 @@ namespace AutomationTradeDfcf
             // 获取主窗体上的所有文本框.
             testAllText = panes[0].FindAll(TreeScope.Children,
                     new PropertyCondition(AutomationElement.ControlTypeProperty, ControlType.Text));
+             */
         }
 
         /// <summary>
@@ -153,12 +155,8 @@ namespace AutomationTradeDfcf
         public void Test2()
         {
             // 取得 结果 框.
-            AutomationElement resultElement = GetText("0");
-            SendKeys("1");
-            SendKeys("{ADD}");
-            SendKeys("1");
-            SendKeys("{ENTER}");
-            Console.WriteLine("结果显示:{0}", resultElement.Current.Name);
+            SendKeys("^T");
+
         }
     }
 }
